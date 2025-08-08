@@ -2,17 +2,14 @@ from pydantic import BaseModel, Field
 from enum import Enum
 from datetime import datetime
 
-# --------------------------------------
+
 # Enum for Stock Transaction Type
-# --------------------------------------
 
 class TransactionType(str, Enum):
     IN = "IN"
     OUT = "OUT"
 
-# --------------------------------------
 # Product Schemas
-# --------------------------------------
 
 class ProductBase(BaseModel):
     name: str
@@ -30,11 +27,11 @@ class ProductOut(ProductBase):
     id: int
 
     class Config:
-        from_attributes = True  # ✅ Pydantic v2 compatible
+        from_attributes = True
 
-# --------------------------------------
+
 # Stock Transaction Schemas
-# --------------------------------------
+
 
 class StockTransactionBase(BaseModel):
     product_id: int
